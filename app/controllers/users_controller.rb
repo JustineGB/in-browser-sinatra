@@ -1,43 +1,53 @@
 class UsersController < ApplicationController
   
-  get '/users/:id' do
-    @users = User.all
-    if !logged_in?
-      redirect '/index'
-    end
-    @user = User.find(params[:id])
-    if !@user.nil? && @user == current_user
-      erb :'users/show'
-    else
-      redirect '/index'
-    end
-  end
- 
   get '/signup' do
-    if !session[:user_id]
-      erb :'users/new'
-    else 
-      redirect to '/signup'
-    end
+    erb :'/users/signup'
   end 
+  
+  post "/signup" do
+    @user = User.create(:username => params[:username], :password => params[:password])
+		if !@user.username.empty? && @user.save  #user can only be save via bycrpt gem when a password is given
+      redirect "/login"
+    else 
+      redirect "/failue"
+	 	end
+  end
   
   get '/login' do 
-    @error_message = params[:error]
-    if !session[:user_id]
-      erb :'/users/login'
-    else 
-      redirect to '/users/show'
-    end
-  end 
+    erb :'/users/login'
+  end
   
-  post '/signup' do 
-    if params[:username] == "" || params[:password] == ""  #if username or password blank 
-      redirect to '/signup'
-    else
-      @user = User.create(:username => params[:username], :password => params[:password])
-      session[:user_id] = @user.id
-      redirect '/bags'
+  post "/login" do
+    @user = User.find_by(:username => params[:username])
+	  if @user  && @user.authenticate(params[:password])
+	  session[:user_id] = @user.id
+	    redirect "/users/show"
+	  else
+	    redirect "/users/failure"
+	  end 
+	end 
+
+  get "/users/failure" do
+    erb :'/users/failure'
+  end
+
+  get "/logout" do
+    session.clear
+    redirect "/"
+  end
+  
+  get '/users/show' do 
+    erb :'/uses/show'
+  end 
+
+  helpers do
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      User.find(session[:user_id])
     end
   end
 
-end 
+end
