@@ -1,1 +1,9 @@
 <h1>All Wines:</h1>
+<% @wines.each do |wine| %>
+  <%= wine.name %><br />
+  <%= wine.year %> <br />
+  <a href="/wine/<%=wine.id%>/edit">Edit</a>
+  <br />
+  <br />
+<% end %>
+<p><a href="/">Homepage</a></p>
