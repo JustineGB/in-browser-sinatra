@@ -1,16 +1,19 @@
 <h1>Add a New Wine:</h1>
 
 <form action="/wines" method="POST">
-  
+
   <label> Wine Name </label>
   <input type="text" name="name" id="name"> </br>
 
+  <label> Vineyard (Producer) </label>
+  <input type="text" name="vineyard" id="vineyard"> </br>
+
   <label> Year </label>
   <input type="number" name="year" id="year"> </br>
-  
+
     <label> Rating </label>
-  <input type="number" name="rating" id="rating"> </br>
-  
+  <input type="number" name="rating" id="rating" min="1" max="10"> </br>
+
     <label> Tasting Notes </label>
   <input type="text" name="tasting_notes" id="tasting_notes"> </br>
 

@@ -1,48 +1,56 @@
 class UsersController < ApplicationController
 
-	get "/signup" do
-		erb :'/users/signup'
-	end
-
-	post "/signup" do
-		user = User.new(:username => params[:username], :password => params[:password])
-		if user.save
-	   	erb :'/users/login'
-	 	else
-    	redirect "/users/failure"
-	 	end
-	end
-
 	get "/login" do
-		erb :'/users/login'
-	end
-
-	post "/login" do
-	  user = User.find_by(:username => params[:username])
-	  if user && user.authenticate(params[:password])
-	    session[:user_id] = user.id
-	    redirect "/user"
-	  else
-	    redirect "/users/failure"
-	  end
-	end
-
-	get "/user" do
-		if logged_in?
-			erb :'/users/show'
+		if !logged_in?
+			erb :"/users/login"
 		else
-			redirect "/login"
+			redirect '/users/show'
 		end
 	end
 
-	get "/users/failure" do
-		erb :'/users/failure'
+	post "/login" do
+		@user = User.find_by(:username => params[:username])
+		if @user && @user.authenticate(params[:password])
+			session[:user_id] = @user.id
+			flash[:message] = 'Welcome!'
+			redirect "users/#{@user.id}"
+		else
+			flash[:error] = "You must sign-up with a validate email and username, please."
+			redirect "/users/login"
+		end
+	end
+
+	get "/signup" do
+		#if !logged_in?
+			erb :'/users/signup'
+		#else
+		#	redirect "users/#{@user.id}"
+		#end
+	end
+
+	post "/signup" do
+		@user = User.new(:username => params[:username], :password => params[:password])
+		if @user.save
+			session[:user_id] = @user.id
+	   	erb :'/users/show'
+	 	else
+			flash[:error] = "You must sign-up with a validate email and username, please."
+    	redirect "/"
+	 	end
+	end
+
+	get "/users/:id" do
+		redirect_if_not_logged_in
+		@user = User.find(params[:id])
+		erb :'/users/show'
 	end
 
 	get "/logout" do
-		session.clear
-		redirect "/"
-	end
-
-
+	    if session[:user_id] != nil
+	      session.destroy
+	      redirect "/"
+	    else
+	      redirect "/"
+	    end
+	  end
 end

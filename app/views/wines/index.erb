@@ -1,9 +1,15 @@
-<h1>All Wines:</h1>
-<% @wines.each do |wine| %>
-  <%= wine.name %><br />
-  <%= wine.year %> <br />
-  <a href="/wine/<%=wine.id%>/edit">Edit</a>
-  <br />
-  <br />
-<% end %>
-<p><a href="/">Homepage</a></p>
+<h1>WINE INDEX</h1>
+
+  <ul style="list-style-type:square">
+    <% @wines.each do |wine| %>
+      <li>
+        Wine Name/Grape: <a href="/wines/<%= wine.id %>"> <%= wine.name %></a>
+
+        Vineyard/Producer: <a href="/wines/<%= wine.id %>"> <%= wine.vineyard %></a>
+          <br></br>
+      </li>
+    <% end %>
+  </ul>
+
+
+<p><a href="/">Click here to go to the homepage</a></p>
