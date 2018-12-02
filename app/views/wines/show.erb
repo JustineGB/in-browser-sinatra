@@ -5,3 +5,12 @@
 <p>Year: <%= @wine.year%></p>
 <p>Rating: <%= @wine.rating%></p>
 <p>Tasting Notes: <%= @wine.tasting_notes%></p>
+
+
+
+<p>
+<form action="/wines/<%= @wine.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input id="submit" type="submit" value="delete">
+</form>
+</p>

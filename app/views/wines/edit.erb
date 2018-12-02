@@ -1,1 +1,14 @@
 <h1>Edit</h1>
+
+<form class="" action="/wines/<%= @wine.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Name:</label>
+  <br></br>
+  <textarea name="name" style="width:auto; height:auto;"> <%= @wine.name %></textarea>
+  <br></br>
+  <input type="submit" name="Edit" value="submit">
+</form>
+
+
+
+<small><p><a href="/wines">Tweet Index</a></p></small>

@@ -4,7 +4,7 @@
     <% @wines.each do |wine| %>
       <li>
         Wine Name/Grape: <a href="/wines/<%= wine.id %>"> <%= wine.name %></a>
-
+        ID: <a href="/wines/<%= wine.id %>"> <%= wine.id %></a>
         Vineyard/Producer: <a href="/wines/<%= wine.id %>"> <%= wine.vineyard %></a>
           <br></br>
       </li>

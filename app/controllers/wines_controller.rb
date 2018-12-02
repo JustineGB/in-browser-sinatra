@@ -42,4 +42,25 @@ class WinesController < ApplicationController
   end
 
 
+  get "/wines/:id/edit" do
+    redirect_if_not_logged_in
+    @wine = Wine.find(params[:id])
+    erb :'/wines/edit'
+  end
+
+  patch "/wines/:id" do
+    redirect_if_not_logged_in
+    @wine = Wine.find(params[:id])
+   @wine.update(params[:wine])
+   redirect "/wines/#{@wine.id}"
+  end
+
+  delete '/wines/:id' do
+    @wine= Wine.find(params[:id])
+    @wine.destroy
+    redirect '/wines'
+  end
+
+
+
 end
