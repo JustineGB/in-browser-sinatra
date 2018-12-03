@@ -1,16 +1,19 @@
-<h1>Here are all of the details on your wine rating:</h1>
-
-<p>Name: <%= @wine.name%></p>
+<h1>Name: <%= @wine.name%></h1>
 <p>Vineyard: <%= @wine.vineyard%></p>
 <p>Year: <%= @wine.year%></p>
 <p>Rating: <%= @wine.rating%></p>
 <p>Tasting Notes: <%= @wine.tasting_notes%></p>
+<p>Username: <%= @wine.user.username%></p>
 
+
+<p>
+  <a href="/wines/<%= @wine.id %>/edit">Edit</a>
+</p>
 
 
 <p>
 <form action="/wines/<%= @wine.id %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input id="submit" type="submit" value="delete">
+  <input id="hidden" type="hidden" name="_method" value="Delete">
+  <input id="submit" type="submit" value="Delete">
 </form>
 </p>

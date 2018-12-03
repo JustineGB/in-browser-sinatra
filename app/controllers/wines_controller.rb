@@ -15,17 +15,14 @@ class WinesController < ApplicationController
 
   post "/wines" do
     redirect_if_not_logged_in
-    #if params[:wine] != ""
-    if params[:name] != "" && params[:vineyard] != "" && params[:rating] != "" && params[:year] != ""
+  #  if params[:name] != "" && params[:vineyard] != "" && params[:rating] != "" && params[:year] != ""
       @wine = Wine.create(name: params[:name], vineyard: params[:vineyard], year: params[:year], rating: params[:rating], tasting_notes: params[:tasting_notes], user_id: current_user.id)
-      #@wine = Wine.create(params)
       flash[:message] = "Wine successfully added."
-      #redirect "/wines"
       redirect "/wines/#{@wine.id}"
-    else
-      flash[:errors] = "Something went wrong - you must fill in all of the required fields for your entry."
-      redirect '/wines/new'
-    end
+  #  else
+  #    flash[:errors] = "Something went wrong - you must fill in all of the required fields for your entry."
+  #    redirect '/wines/new'
+#    end
   end
 
   get "/wines/:id" do
@@ -37,7 +34,6 @@ class WinesController < ApplicationController
   post "/wines/:id" do
     redirect_if_not_logged_in
     @wine = Wine.find(params[:id])
-  # @wine.update(params[:wine])
    redirect "/wines/#{@wine.id}"
   end
 
@@ -51,7 +47,9 @@ class WinesController < ApplicationController
   patch "/wines/:id" do
     redirect_if_not_logged_in
     @wine = Wine.find(params[:id])
-   @wine.update(params[:wine])
+    @wine.update(params[:wine])
+    @wine.save
+    flash[:message] = "Successfully edited the wine."
    redirect "/wines/#{@wine.id}"
   end
 

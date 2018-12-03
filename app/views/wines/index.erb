@@ -3,13 +3,21 @@
   <ul style="list-style-type:square">
     <% @wines.each do |wine| %>
       <li>
-        Wine Name/Grape: <a href="/wines/<%= wine.id %>"> <%= wine.name %></a>
-        ID: <a href="/wines/<%= wine.id %>"> <%= wine.id %></a>
-        Vineyard/Producer: <a href="/wines/<%= wine.id %>"> <%= wine.vineyard %></a>
-          <br></br>
+        <strong>Wine Name/Grape: <a href="/wines/<%= wine.id %>"> <%= wine.name %></a></strong>
+        <ul>
+          <li> Vineyard/Producer: <a href="/wines/<%= wine.id %>"> <%= wine.vineyard %></a></li>
+          <li> Rating: <a href="/wines/<%= wine.id %>"> <%= wine.rating %></a> </li>
+          <li> Wine ID: <a href="/wines/<%= wine.id %>"> <%= wine.id %></a> </li>
+          <li> User ID: <a href="/users/<%= wine.user_id %>"> <%= wine.user_id %><br></br> </li>
+        </ul>
       </li>
+      <br></br>
     <% end %>
   </ul>
 
 
+
+
+<br></br>
+<p><a href="/wines/new">Click here to add a new wine</a></p>
 <p><a href="/">Click here to go to the homepage</a></p>
