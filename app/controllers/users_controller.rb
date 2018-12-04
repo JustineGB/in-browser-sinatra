@@ -26,14 +26,14 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:username] == "" || params[:password] == "" || params[:email] == ""
+      @user = User.new(params)
+      if @user.save
+      session[:user_id] = @user.id
+      flash[:message] = "You have successfully created an account!!"
+      erb :'/users/show'
+    else
       flash[:errors] = "Account creation failure"
       redirect to '/signup'
-    else
-      @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-      session[:user_id] = @user.id
-      #redirect '/wines'
-      erb :'/users/show'
     end
   end
 

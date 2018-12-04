@@ -1,10 +1,15 @@
-<h2>Welcome!</h2>
-<h3>This in an index of all the wines that have been addedby various users:</h3>
-<p><a href="/users">Click here to go to a list of all users</a></br>
-<a href="/wines/new">Click here to add a new wine</a></br>
-<a href="/">Click here to go to the homepage</a></p>
+<h2>Welcome to the Wine Track App!</h2>
+
+<h3>What would you like to do?</h3>
+  <ol>
+    <li>To view a list of all <strong><a href="/users">active users</a></strong></li>
+    <li>To <strong><a href="/wines/new">add a new wine?</a></strong> </li>
+    <li>To return to the <strong><a href="/">homepage?</a></strong></li>
+  </ol>
+<br></br>
 
 
+<h3>Complete Wine Index for all users:</h3>
 <ol type="1">
     <% @wines.each do |wine| %>
       <li>
