@@ -1,8 +1,12 @@
-<h3>Welcome, <%= @user.username %>, to your wine page!!</h3>
+<h3>Welcome <u><%=@user.username%></u>, to YOUR wine page!!</h3>
 
-<h4>Here are all of your wines:</h4>
-
-
-
+<h3>Your Wines:</h3>
+<ol type="1">
+  <% @user.wines.each do |wine| %>
+    <li><a href="/wines/<%= wine.id%>"><%= wine.name %></li>
+  <% end %>
+</ol>
+<br></br>
 
 <p><a href="/wines/new">Add a New Wine</a></p>
+<p><a href="/users">User Index </a></p>

@@ -7,10 +7,9 @@
   <p> Year: <%= @wine.year%> </p>
 
   <input id="hidden" type="hidden" name="_method" value="patch">
-    <label for="rating"> Rating: </label>
-    <input type="text" name="wine[rating]" id="name" value="<% @wine.rating %>"><br><br>
+  <label> Rating: </label><input type="number" name="rating" min="1" max="10"><% @wine.rating %></br>
     <label> Tasting Notes: </label>
-    <input type="textarea" name="wine[tasting_notes]" id="tasting_notes" value="<%= @wine.tasting_notes %>"><br><br>
+    <input type="textarea" name="wine[tasting_notes]" value="<%= @wine.tasting_notes %>"><br><br>
     <br></br>
     <input type="submit" name="Edit Wine" value="Submit">
   </form>

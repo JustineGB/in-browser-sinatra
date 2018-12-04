@@ -1,23 +1,19 @@
-<h1>WINE INDEX</h1>
+<h2>Welcome!</h2>
+<h3>This in an index of all the wines that have been addedby various users:</h3>
+<p><a href="/users">Click here to go to a list of all users</a></br>
+<a href="/wines/new">Click here to add a new wine</a></br>
+<a href="/">Click here to go to the homepage</a></p>
 
-  <ul style="list-style-type:square">
+
+<ol type="1">
     <% @wines.each do |wine| %>
       <li>
-        <strong>Wine Name/Grape: <a href="/wines/<%= wine.id %>"> <%= wine.name %></a></strong>
-        <ul>
-          <li> Vineyard/Producer: <a href="/wines/<%= wine.id %>"> <%= wine.vineyard %></a></li>
-          <li> Rating: <a href="/wines/<%= wine.id %>"> <%= wine.rating %></a> </li>
-          <li> Wine ID: <a href="/wines/<%= wine.id %>"> <%= wine.id %></a> </li>
-          <li> User ID: <a href="/users/<%= wine.user_id %>"> <%= wine.user_id %><br></br> </li>
+        <strong>Wine Name or Grape:   <a href="/wines/<%= wine.id %>"> <%= wine.name %></a></strong>
+        <ul list-style="list-style-type:square">
+          <li> Vineyard(Producer):   <%= wine.vineyard %></a></li>
+          <li> Rating(1-10):   <%= wine.rating %></a> </li>
         </ul>
       </li>
       <br></br>
     <% end %>
-  </ul>
-
-
-
-
-<br></br>
-<p><a href="/wines/new">Click here to add a new wine</a></p>
-<p><a href="/">Click here to go to the homepage</a></p>
+  </ol>

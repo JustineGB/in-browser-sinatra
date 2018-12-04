@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "whiteburgundy"
+    set :session_secret, "password_security"
     register Sinatra::Flash
   end
 
@@ -14,24 +14,31 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-helpers do
-    def redirect_if_not_logged_in
-      if !logged_in?
-        flash[:errors] = "You must be loggin in to view that page."
-        redirect "/"
-      end
-    end
-
-    def authorized_to_edit?(wine)
-      @wine.user == current_user
-    end
-
+  helpers do
     def logged_in?
-      !!current_user     #!!session[:user_id]
+      !!current_user      #!!session[:user_id]
     end
 
     def current_user
-      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id] #User.find(session[:user_id])
+      #User.find(session[:user_id])
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
+
+    def redirect_if_not_logged_in
+      if !logged_in?
+        flash[:errors] = "You must be loggin in to view that page."
+        redirect "/login"
+      end
+    end
+
+    def redirect_if_logged_in
+        if logged_in?
+          redirect "/users/#{current_user.id}"
+        end
+      end
+      
+    def authorized_to_edit?(wine)
+      @wine.user == current_user
     end
   end
 
