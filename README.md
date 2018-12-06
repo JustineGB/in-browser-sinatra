@@ -1,6 +1,6 @@
 
 ### Best Colorado Hikes
-This is a Sinatra App made by Justine Bricknell for Flatiron School Final Project Section 2 (Ruby/Sinatra). The application allows a user to store and track all of his/her wine ratings. Entering information such as wine name/grape, vineyard, year(vintage), rating (personal rating), and tasting notes. A user can view a large index with all of the wines that he/she and any other user on the app has added. This way, a user can browse and get a good idea for wine(s) he/she might want to try next depending on the reviews from others. To install, just clone the repo and install the program into your computer via the terminal. Be sure to run bundle install to get all of your gems up and running.
+This is a Sinatra App made by Justine Bricknell for Flatiron School Final Project Section 2 (Ruby/Sinatra). The application allows a user to store and track all of his/her wine ratings. Entering information such as wine name/grape, vineyard, year(vintage), rating (personal rating), and tasting notes. A user can view a large index with all of the wines that he/she and any other user on the app has added. This way, a user can browse and get a good idea for wine(s) he/she might want to try next depending on the reviews from others.
 
 ## Installation
 

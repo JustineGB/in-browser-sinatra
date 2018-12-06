@@ -17,7 +17,8 @@ class UsersController < ApplicationController
       flash[:message] = "Welcome, #{@user.username}!"
       redirect :"/users/#{@user.slug}"
     else
-      flash[:error] = "Your credentials were invalid.  Please sign up or try again."
+      #flash[:error] = "Your credentials were invalid.  Please sign up or try again."
+      flash[:error] = "Account creation failure: #{@user.error.full_messages.to_sentence}"
       redirect '/signup'
     end
   end
