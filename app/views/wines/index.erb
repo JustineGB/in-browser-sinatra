@@ -13,10 +13,12 @@
 <ol type="1">
     <% @wines.each do |wine| %>
       <li>
-        <strong>Wine Name or Grape:   <a href="/wines/<%= wine.id %>"> <%= wine.name %></a></strong>
+        <strong>Wine Name/Grape:   <a href="/wines/<%= wine.id %>"> <%= wine.name %></a></strong>
         <ul list-style="list-style-type:square">
-          <li> Vineyard(Producer):   <%= wine.vineyard %></a></li>
-          <li> Rating(1-10):   <%= wine.rating %></a> </li>
+          <li> Vineyard(Producer):   <%= wine.vineyard %></li>
+          <li> Rating:   <%= wine.rating %></li>
+          <li> Notes:   <%= wine.tasting_notes %></li>
+          <li>User: <a href="/users/<% wine.user.slug %>"><%= wine.user.username %></a></li>
         </ul>
       </li>
       <br></br>

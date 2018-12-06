@@ -3,14 +3,14 @@
 
 <form method="POST" action="/wines/<%= @wine.id %>">
   <p> Wine Name/Grape: <%= @wine.name%> </p>
-  <p> Vineyard: <%= @wine.vineyard%> </p>
-  <p> Year: <%= @wine.year%> </p>
+  <p> Vineyard Name: <%= @wine.vineyard%> </p>
+  <p> Year/Vintage: <%= @wine.year%> </p>
 
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <label> Rating: </label><input type="number" name="rating" min="1" max="10"><% @wine.rating %></br>
+    <label> Rating: </label>
+    <input type="number" name="rating" min="1" max="10" placeholder="<%= @wine.rating %>"><br></br>
     <label> Tasting Notes: </label>
-    <input type="textarea" name="wine[tasting_notes]" value="<%= @wine.tasting_notes %>"><br><br>
-    <br></br>
+    <input type="textarea" name="tasting_notes" placeholder="<%= @wine.tasting_notes %>"><br></br>
     <input type="submit" name="Edit Wine" value="Submit">
   </form>
 

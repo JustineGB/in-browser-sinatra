@@ -3,12 +3,12 @@
 <p>Year: <%= @wine.year%></p>
 <p>Rating: <%= @wine.rating%></p>
 <p>Tasting Notes: <%= @wine.tasting_notes%></p>
-<p>Username: <a href="/users/<%= @wine.user_id%>"><%= @wine.user.username%></a></p>
+<p>Username: <a href="/users/<%= @wine.user.slug %>"><%= @wine.user.username %></a></p>
 
 <% if authorized_to_edit?(@wine) %>
-<a href="/wines/<%= @wine.id %>/edit">Edit Wine</a><br><br>
-<form action="/wines/<%= @wine.id %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="Delete">
-  <input id="submit" type="submit" value="Delete">
-</form>
+  <a href="/wines/<%= @wine.id %>/edit">Edit Wine</a><br><br>
+  <form action="/wines/<%= @wine.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="Delete">
+    <input id="submit" type="submit" value="Delete">
+  </form>
 <% end %>

@@ -1,5 +1,3 @@
-require 'pry'
-
 class WinesController < ApplicationController
 
   get "/wines" do
@@ -14,19 +12,19 @@ class WinesController < ApplicationController
   end
 
   post "/wines" do
-   redirect_if_not_logged_in
+    redirect_if_not_logged_in
     if params[:name] != "" && params[:vineyard] != "" && params[:rating] != "" && params[:year] != ""
       @wine = Wine.create(name: params[:name], vineyard: params[:vineyard], year: params[:year], rating: params[:rating], tasting_notes: params[:tasting_notes], user_id: current_user.id)
       flash[:message] = "Wine successfully added."
       redirect "/wines/#{@wine.id}"
     else
-      flash[:errors] = "Something went wrong - you must fill in all of the required fields for your entry."
+      flash[:error] = "Something went wrong - you must fill in all of the required fields for your entry."
       redirect '/wines/new'
     end
   end
 
   get "/wines/:id" do
-  redirect_if_not_logged_in
+    redirect_if_not_logged_in
     @wine = Wine.find(params[:id])
     erb :'/wines/show'
   end
@@ -34,7 +32,7 @@ class WinesController < ApplicationController
   post "/wines/:id" do
     redirect_if_not_logged_in
     @wine = Wine.find(params[:id])
-    @tweet.update(name: params[:name], vineyard: params[:vineyard], year: params[:year], rating: params[:rating], tasting_notes: params[:tasting_notes])
+    @wine.update(name: params[:name], vineyard: params[:vineyard], year: params[:year], rating: params[:rating], tasting_notes: params[:tasting_notes])
     flash[:message] = "Wine successfully added."
     redirect "/wines/#{@wine.id}"
   end
@@ -42,21 +40,17 @@ class WinesController < ApplicationController
   get "/wines/:id/edit" do
     redirect_if_not_logged_in
     @wine = Wine.find(params[:id])
-    if authorized_to_edit?(@tweet)
-      erb :'wines/edit'
-    else
-      redirect '/tweets'
-    end
+    erb :'wines/edit'
   end
 
   patch "/wines/:id" do
     redirect_if_not_logged_in
-    if params[:wine] == " " && !authorized_to_edit?(@wine)
-      flash[:error] = "You cannot edit someone else's wine review."
+    @wine = Wine.find(params[:id])
+    if params[:rating].empty? || params[:tasting_notes].empty?
+      flash[:error] = "You cannot edit a wine review without a rating and tasting_notes."
       redirect "/wines/#{@wine.id}/edit"
     else
-      @wine = Wine.find(params[:id])
-      @wine.update(params[:wine]) #(name: params[:name], vineyard: params[:vineyard], year: params[:year], rating: params[:rating], tasting_notes: params[:tasting_notes])
+      @wine.update(rating: params[:rating], tasting_notes: params[:tasting_notes])
       @wine.save
       flash[:message] = "Successfully edited the wine."
       redirect "/wines/#{@wine.id}"
@@ -66,15 +60,9 @@ class WinesController < ApplicationController
   delete '/wines/:id' do
     redirect_if_not_logged_in
     @wine= Wine.find(params[:id])
-    if authorized_to_edit?(@wine)
-      @wine.destroy
-      flash[:message] = "Successfully deleted."
-      redirect '/wines'
-    else
-      flash[:error] = "Error. Did not delete."
-      redirect '/wines'
-    end
+    @wine.destroy
+    flash[:message] = "Successfully deleted."
+    redirect '/wines'
   end
-
 
 end

@@ -33,10 +33,11 @@ class ApplicationController < Sinatra::Base
 
     def redirect_if_logged_in
         if logged_in?
+          flash[:message] = "You are already logged in. Welcome back!"
           redirect "/users/#{current_user.id}"
         end
       end
-      
+
     def authorized_to_edit?(wine)
       @wine.user == current_user
     end
