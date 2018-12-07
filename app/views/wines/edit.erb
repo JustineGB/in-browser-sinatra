@@ -1,10 +1,8 @@
 <h1>Edit <%= @wine.name %> </h1>
-
-
 <form method="POST" action="/wines/<%= @wine.id %>">
-  <p> Wine Name/Grape: <%= @wine.name%> </p>
+  <p> Wine Name or Grape: <%= @wine.name%> </p>
   <p> Vineyard Name: <%= @wine.vineyard%> </p>
-  <p> Year/Vintage: <%= @wine.year%> </p>
+  <p> Year: <%= @wine.year%> </p>
 
   <input id="hidden" type="hidden" name="_method" value="patch">
     <label> Rating: </label>
@@ -14,15 +12,4 @@
     <input type="submit" name="Edit Wine" value="Submit">
   </form>
 
-
-
-
-
-
-
-
-
-
-
-<br></br>
-<small><p><a href="/wines">Tweet Index</a></p></small>
+<br></br><small><p><a href="/wines">Wine Index</a></p></small>

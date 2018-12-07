@@ -29,13 +29,13 @@ class WinesController < ApplicationController
     erb :'/wines/show'
   end
 
-  post "/wines/:id" do
-    redirect_if_not_logged_in
-    @wine = Wine.find(params[:id])
-    @wine.update(name: params[:name], vineyard: params[:vineyard], year: params[:year], rating: params[:rating], tasting_notes: params[:tasting_notes])
-    flash[:message] = "Wine successfully added."
-    redirect "/wines/#{@wine.id}"
-  end
+  #post "/wines/:id" do
+  #  redirect_if_not_logged_in
+  #  @wine = Wine.find(params[:id])
+  #  @wine.update(name: params[:name], vineyard: params[:vineyard], year: params[:year], rating: params[:rating], tasting_notes: params[:tasting_notes])
+  #  flash[:message] = "Wine successfully added."
+  #  redirect "/wines/#{@wine.id}"
+  #end
 
   get "/wines/:id/edit" do
     redirect_if_not_logged_in

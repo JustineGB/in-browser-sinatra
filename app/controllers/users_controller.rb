@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
+  #  binding.pry
     redirect_if_logged_in
     erb :"/users/login"
   end

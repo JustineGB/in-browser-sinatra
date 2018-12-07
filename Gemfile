@@ -12,6 +12,8 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'sinatra-flash'
+gem 'validates_timeliness', '~> 5.0.0.alpha3'
+
 
 group :test do
   gem 'rspec'

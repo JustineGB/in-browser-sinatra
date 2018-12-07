@@ -1,4 +1,4 @@
-<h2>Welcome to the Wine Track App!</h2>
+<h2>Welcome to the Wine Tracker App!</h2>
 
 <h3>What would you like to do?</h3>
   <ol>
@@ -10,17 +10,16 @@
 
 
 <h3>Complete Wine Index for all users:</h3>
-<ol type="1">
     <% @wines.each do |wine| %>
-      <li>
+
         <strong>Wine Name/Grape:   <a href="/wines/<%= wine.id %>"> <%= wine.name %></a></strong>
-        <ul list-style="list-style-type:square">
+
+        <ul>
           <li> Vineyard(Producer):   <%= wine.vineyard %></li>
           <li> Rating:   <%= wine.rating %></li>
           <li> Notes:   <%= wine.tasting_notes %></li>
           <li>User: <a href="/users/<% wine.user.slug %>"><%= wine.user.username %></a></li>
         </ul>
-      </li>
+
       <br></br>
     <% end %>
-  </ol>
