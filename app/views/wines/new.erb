@@ -3,7 +3,7 @@
 <form action="/wines" method="POST">
   <label> Wine Name </label><input type="text" name="name"> </br>
   <label> Vineyard (Producer) </label><input type="text" name="vineyard"> </br>
-  <label> Year </label><input type="number" name="year"> </br>
+  <label> Year </label><input type="number" name="year"min="1825" max="2018"> </br>
   <label> Rating </label><input type="number" name="rating" min="1" max="10"> </br>
   <label> Tasting Notes </label><input type="text" name="tasting_notes"> </br><br></br>
   <input type="submit" value="Create New Wine Rating">

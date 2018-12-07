@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       redirect :"/users/#{@user.slug}"
     else
       flash[:error] = "Your credentials were invalid. Please sign up or try again."
+      erb :"/users/login"
     end
   end
 

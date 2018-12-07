@@ -13,12 +13,12 @@ class WinesController < ApplicationController
 
   post "/wines" do
     redirect_if_not_logged_in
-    if params[:name] != "" && params[:vineyard] != "" && params[:rating] != "" && params[:year] != ""
+    if params[:name] != "" && params[:vineyard] != "" && params[:rating] != "" && params[:year] != "" && params[:tasting_notes] != ""
       @wine = Wine.create(name: params[:name], vineyard: params[:vineyard], year: params[:year], rating: params[:rating], tasting_notes: params[:tasting_notes], user_id: current_user.id)
       flash[:message] = "Wine successfully added."
       redirect "/wines/#{@wine.id}"
     else
-      flash[:errors] = "Something went wrong - you must fill in all of the required fields for your entry."
+      flash[:error] = "Something went wrong - you must fill in all of the required fields for your entry."
       redirect '/wines/new'
     end
   end
