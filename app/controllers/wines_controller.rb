@@ -18,7 +18,7 @@ class WinesController < ApplicationController
       flash[:message] = "Wine successfully added."
       redirect "/wines/#{@wine.id}"
     else
-      flash[:error] = "Something went wrong - you must fill in all of the required fields for your entry."
+      flash[:errors] = "Something went wrong - you must fill in all of the required fields for your entry."
       redirect '/wines/new'
     end
   end

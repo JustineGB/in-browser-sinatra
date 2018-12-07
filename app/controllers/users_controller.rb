@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-  #  binding.pry
     redirect_if_logged_in
     erb :"/users/login"
   end
@@ -18,9 +17,7 @@ class UsersController < ApplicationController
       flash[:message] = "Welcome, #{@user.username}!"
       redirect :"/users/#{@user.slug}"
     else
-      #flash[:error] = "Your credentials were invalid.  Please sign up or try again."
-      flash[:error] = "Account creation failure: #{@user.error.full_messages.to_sentence}"
-      redirect '/signup'
+      flash[:error] = "Your credentials were invalid. Please sign up or try again."
     end
   end
 
@@ -36,7 +33,7 @@ class UsersController < ApplicationController
       flash[:message] = "You have successfully created an account!!"
       erb :'/users/show'
     else
-      flash[:error] = "Account creation failure"
+      flash[:error] = "Account creation failure: #{@user.errors.full_messages.to_sentence}"
       redirect to '/signup'
     end
   end
