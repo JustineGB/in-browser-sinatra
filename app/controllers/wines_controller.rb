@@ -3,6 +3,7 @@ class WinesController < ApplicationController
   get "/wines" do
     redirect_if_not_logged_in
     @wines = Wine.all
+    @user = User.find_by_slug(params[:slug])
     erb :"/wines/index"
   end
 
