@@ -1,14 +1,19 @@
-<h1>Name: <%= @wine.name%></h1>
-<p>Vineyard: <%= @wine.vineyard%></p>
-<p>Year: <%= @wine.year%></p>
-<p>Rating: <%= @wine.rating%></p>
-<p>Tasting Notes: <%= @wine.tasting_notes%></p>
-<p>Username: <a href="/users/<%= @wine.user.slug %>"><%= @wine.user.username %></a></p>
+<h4>Wine Details: </h4>
+<ul>
+  <li>Wine Name: <%= @wine.name%></li>
+  <li>Vineyard: <%= @wine.vineyard%></li>
+  <li>Year: <%= @wine.year%></li>
+  <li>Rating: <%= @wine.rating%></li>
+  <li>Tasting Notes: <%= @wine.tasting_notes%></li>
+  <li>Username: <a href="/users/<%= @wine.user.slug %>"><%= @wine.user.username %></a></li>
+</ul></br>
 
 <% if authorized_to_edit?(@wine) %>
-  <a href="/wines/<%= @wine.id %>/edit">Edit Wine</a><br><br>
+<h4>What would you like to do with your wine review?</h4>
+  <p>(1) Click <a href="/wines/<%= @wine.id %>/edit">here </a>here to edit the wine</p></br>
   <form action="/wines/<%= @wine.id %>" method="post">
+  <p>(2)
     <input id="hidden" type="hidden" name="_method" value="Delete">
     <input id="submit" type="submit" value="Delete">
   </form>
-<% end %>
+<% end %></p></br>
