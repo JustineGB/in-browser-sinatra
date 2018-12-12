@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
 
-  get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    erb :'users/show'
-  end
-
   get '/login' do
     redirect_if_logged_in
     erb :"/users/login"
@@ -39,20 +34,24 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'/users/show'
+  end
+
   get '/users' do
     @users = User.all
-    erb :'users/index'
+    erb :'/users/index'
   end
 
   get '/logout' do
-    if session[:user_id] != nil
-      session.destroy
-      flash[:message] = "You have been logged out. Thanks for visiting!"
-      redirect to '/'
-    else
-      redirect to '/'
-    end
-  end
-
+   if session[:user_id] != nil
+     session.destroy
+     flash[:message] = "You have been logged out. Thanks for visiting!"
+     redirect to '/'
+   else
+     redirect to '/'
+   end
+ end
 
 end

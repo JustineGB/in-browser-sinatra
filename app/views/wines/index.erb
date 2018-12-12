@@ -14,7 +14,7 @@
           <li>Vineyard(Producer): <%= wine.vineyard %></li>
           <li>Rating: <%= wine.rating %></li>
           <li>Notes: <%= wine.tasting_notes %></li>
-          <li>User: <a href="/users/<% wine.user.slug %>"><%=wine.user.username%></a></li>
+          <li>User: <a href="/users/<%= wine.user.slug %>"><%= wine.user.username%></a></li>
         </ul><br></br>
     <% end %>
 
