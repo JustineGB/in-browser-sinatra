@@ -1,5 +1,5 @@
 <h2><u>Welcome <%=@user.username%></u></h2>
-<h6>This is your user home page</h6></br>
+<h6>This is your user home page</h6><br>
 
 <h4>Your Info: </h4>
   <ul>
@@ -7,14 +7,19 @@
     <li>User Email: <%=@user.email%></li>
     <li>User Slug: <%=@user.slug%></li>
     <li>User ID: <%=@user.id%></li>
-  </ul></br>
+  </ul><br>
 
+<% if !@user.wines.empty? %>
 <h4>Your Wines:</h4>
   <ol>
     <%@user.wines.each do |wine|%>
     <li><a href="/wines/<%= wine.id%>"><%= wine.name %></a></li>
     <% end %>
-  </ol></br>
+  </ol><br>
+  <% end %>
 
-<p>Would you like to add another wine review? Please click <a href="/wines/new">here.</a></p>
-<p>Would you like to view the User Index? Please click <a href="/users">here.</a></p></br>
+<h4>Would you like to add another wine review? </h4>
+<p>Please, click <a href="/wines/new">here.</a></p><br>
+
+<!--<h4>Would you like to view the User Index? </h4>
+<p>Please, click <a href="/users">here.</a></p><br>-->

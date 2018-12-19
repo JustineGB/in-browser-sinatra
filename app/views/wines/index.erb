@@ -5,7 +5,7 @@
     <li>To view a list of all <strong><a href="/users">active users</a></strong></li>
     <li>To <strong><a href="/wines/new">add a new wine?</a></strong></li>
     <li>To return to the <strong><a href="/">homepage?</a></strong></li>
-  </ol><br></br>
+  </ol><br>
 
 <h3>Complete Wine Index for all users:</h3>
     <%@wines.each do |wine|%>
@@ -15,9 +15,11 @@
           <li>Rating: <%= wine.rating %></li>
           <li>Notes: <%= wine.tasting_notes %></li>
           <li>User: <a href="/users/<%= wine.user.slug %>"><%= wine.user.username%></a></li>
-        </ul><br></br>
+        </ul><br><
     <% end %>
 
-<h3>Other Great Wine Websites:</h3>
-<a href="https://www.vivino.com/" target="_blank">Vivino</a><br></br>
-<a href="https://www.cellartracker.com/" target="_blank">Cellar Wine</a><br></br>
+<h6>Other Great Wine Websites:</h6>
+<ul>
+  <li><a href="https://www.vivino.com/" target="_blank">Vivino</a></li>
+  <li><a href="https://www.cellartracker.com/" target="_blank">Cellar Wine</a></li>
+</ul><br>

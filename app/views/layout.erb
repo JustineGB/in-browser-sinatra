@@ -3,13 +3,11 @@
   <head>
     <title>Wine Tracker</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-
   </head>
+
   <body>
 
   <div class="container">
-    <%= yield %>
     <% if flash[:message] %>
       <h3 style="color: blue;"><%= flash[:message] %><h3>
     <% end %>
@@ -17,17 +15,21 @@
       <h3 style="color: red;"><%= flash[:error] %></h3>
     <% end %>
 
+  <%= yield %>
 
-  <div>
     <% if logged_in? %>
       <h6>Control Panel:</h6>
         <p><a href="/logout">Logout  </a></p>
         <p><a href="/wines">Wine Index  </a></p>
-    <% end %></small>
+        <p><a href="/users">User Index  </a></p>
+
+    <% end %>
   </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
   </body>
+
 </html>

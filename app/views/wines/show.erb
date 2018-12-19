@@ -10,10 +10,10 @@
 
 <% if authorized_to_edit?(@wine) %>
 <h4>What would you like to do with your wine review?</h4>
-  <p>(1) Click <a href="/wines/<%= @wine.id %>/edit">here </a>here to edit the wine</p></br>
+  <p>(1) Click <a href="/wines/<%= @wine.id %>/edit">here </a>here to edit the wine</p><br>
   <form action="/wines/<%= @wine.id %>" method="post">
   <p>(2)
     <input id="hidden" type="hidden" name="_method" value="Delete">
     <input id="submit" type="submit" value="Delete">
   </form>
-<% end %></p></br>
+<% end %></p>

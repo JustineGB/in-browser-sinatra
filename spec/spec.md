@@ -10,7 +10,7 @@ Specs:
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying (Yes - wines belong to users and they can be created, read, updated, and destroyed).
 - [x] Ensure that users can't modify content created by other users (Yes - only can edit and delete your own wine reviews)
 - [x] Include user input validations (Yes - username, email, etc.)
-- [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new) (Yes - for example, if you try to sign up with an already taken email you will get a specific error message per that validation)
+- [X] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new) (Yes - for example, if you try to sign up with an already taken email you will get a specific error message per that validation)
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code (Yes - includes all of these things).
 
 Confirm
