@@ -8,10 +8,7 @@ This is a Sinatra App made by Justine Bricknell for Flatiron School Final Projec
 
 ## Usage
 
-Type the code below and follow on screen prompts.
-
-  $ in-browser-sinatra
-
+Bundle and then run shotgun.
 First, signup or login with valid info. Then you can add, edit, and delete all of your own wine ratings. You can view the
 user index to see all of the other wine reviews that were added by different users.
 
