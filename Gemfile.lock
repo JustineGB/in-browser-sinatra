@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/bmabey/database_cleaner.git
-  revision: 75c9666bb6fe2b19cbdfd108cfeed0b162c51c0c
+  revision: dd3d7d8c9a8e8772f1654f37c50758a23ab67c09
   specs:
     database_cleaner (1.8.0)
 
@@ -27,7 +27,7 @@ GEM
     bootsnap (1.3.0)
       msgpack (~> 1.0)
     builder (3.2.3)
-    capybara (3.25.0)
+    capybara (3.28.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -46,9 +46,9 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    msgpack (1.3.0)
+    msgpack (1.3.1)
     mustermann (1.0.3)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -59,8 +59,8 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rake (12.3.2)
-    regexp_parser (1.5.1)
+    rake (12.3.3)
+    regexp_parser (1.6.0)
     require_all (2.0.0)
     ripl (0.7.1)
       bond (~> 0.5.1)
@@ -121,6 +121,7 @@ DEPENDENCIES
   bootsnap (= 1.3.0)
   capybara
   database_cleaner!
+  nokogiri (>= 1.10.4)
   pry
   rack-test
   rake
