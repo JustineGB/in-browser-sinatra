@@ -4,11 +4,10 @@ This is a Sinatra App made by Justine Bricknell for Flatiron School Final Projec
 
 ## Installation
 
-    $ gem install in-browser-sinatra
+    Git clone into the repo. CD into the folder. Run bundle and rake. Then you can run shotgun and navigate to the directed url. 
 
 ## Usage
 
-Bundle and then run shotgun.
 First, signup or login with valid info. Then you can add, edit, and delete all of your own wine ratings. You can view the
 user index to see all of the other wine reviews that were added by different users.
 
