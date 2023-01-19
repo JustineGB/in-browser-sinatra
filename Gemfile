@@ -4,7 +4,7 @@ gem "nokogiri", ">= 1.10.4"
 
 gem 'sinatra'
 # gem 'activerecord'
-gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
+gem 'activerecord', '~> 6.1', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
